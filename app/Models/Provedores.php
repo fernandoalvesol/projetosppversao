@@ -28,4 +28,9 @@ class Provedores extends Model
 
         return $this->hasMany(Blacklist::class);
     }
+
+    public function responsavel(){
+
+        return $this->belongsTo(Responsavel::class);
+    }
 }
