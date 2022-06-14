@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Painel\PainelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//ROTA PAINEL
+Route::get('/painel', [PainelController::class, 'index'])->name('painel.index');
+
+ 
 Route::get('/', function () {
     return view('welcome');
 });

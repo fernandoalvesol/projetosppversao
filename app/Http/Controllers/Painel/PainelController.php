@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserController extends Controller
+class PainelController extends Controller
 {
     private $user;
+
 
     public function __construct(User $user)
     {
@@ -16,12 +18,11 @@ class UserController extends Controller
 
     public function index(){
 
-        $title = "Gestão de Usuários";
+        $title = "DashBoard";
 
         $user = $this->user->all();
 
-        return view('Painel.User.index', compact('title', 'user'));
-
+        return view('Painel.painel.index', compact('title', 'user'));
 
     }
 }
