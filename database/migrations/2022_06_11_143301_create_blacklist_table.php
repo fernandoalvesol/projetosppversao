@@ -14,9 +14,11 @@ class CreateBlacklistTable extends Migration
     public function up()
     {
         Schema::create('blacklist', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('provedores_id')
-                  ->constrained('provedores')
+            $table->increments('id');            
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')
+                  ->references('id')
+                  ->on('users')
                   ->onDelete('cascade');
             $table->string('tipodepessoa');
             $table->enum('tipo',['cnpj', 'cpf']);

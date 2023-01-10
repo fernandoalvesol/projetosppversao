@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComentariosTable extends Migration
+class CreateProvedorUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateComentariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentarios', function (Blueprint $table) {
+        Schema::create('provedor_user', function (Blueprint $table) {
             $table->increments('id');            
-            $table->integer('blacklist_id')->unsigned();
-            $table->foreign('blacklist_id')
+            $table->integer('provedores_id')->unsigned();
+            $table->foreign('provedores_id')
                   ->references('id')
-                  ->on('blacklist')
-                  ->onDelete('cascade');
-            $table->text('comentario');
-            $table->boolean('visivel');
-            $table->date('dtcomentarios');
+                  ->on('provedores');
+
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')
+                        ->references('id')
+                        ->on('users');
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateComentariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('provedor_user');
     }
 }

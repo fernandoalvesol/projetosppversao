@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Painel\PainelController;
+use App\Http\Controllers\Site\SiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,17 @@ use App\Http\Controllers\Painel\PainelController;
 |
 */
 
+//ROTA SITE
+Route::get('/', [SiteController::class, 'index'])->name('site.index');
+
+
 //ROTA PAINEL
 Route::get('/painel', [PainelController::class, 'index'])->name('painel.index');
 
- 
-Route::get('/', function () {
+/**
+ *
+ * Route::get('/', function () {
     return view('welcome');
-});
+}); 
+ * 
+ */

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComentariosTable extends Migration
+class CreateIndicadoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateComentariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('comentarios', function (Blueprint $table) {
+        Schema::create('indicadores', function (Blueprint $table) {
             $table->increments('id');            
             $table->integer('blacklist_id')->unsigned();
             $table->foreign('blacklist_id')
                   ->references('id')
                   ->on('blacklist')
                   ->onDelete('cascade');
-            $table->text('comentario');
+            $table->text('indicadores');
             $table->boolean('visivel');
-            $table->date('dtcomentarios');
+            $table->date('dtindicadores');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateComentariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('indicadores');
     }
 }

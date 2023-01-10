@@ -19,10 +19,8 @@ class PainelController extends Controller
     public function index(){
 
         $title = "DashBoard";
-
-        $user = $this->user->all();
-
-        return view('Painel.painel.index', compact('title', 'user'));
+        
+        return view('Painel.painel.index');
 
     }
 }

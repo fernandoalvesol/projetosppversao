@@ -14,14 +14,15 @@ class CreateResponsavelTable extends Migration
     public function up()
     {
         Schema::create('responsavel', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('provedores_id')
-                  ->constrained('provedores')
+            $table->increments('id');            
+            $table->integer('provedores_id')->unsigned();
+            $table->foreign('provedores_id')
+                  ->references('id')
+                  ->on('provedores')
                   ->onDelete('cascade');
             $table->string('name');
             $table->integer('cpf');
             $table->integer('rg');
-            $table->date('dtnascimento');
             $table->string('logradouro');
             $table->integer('complemento');
             $table->string('bairro');
