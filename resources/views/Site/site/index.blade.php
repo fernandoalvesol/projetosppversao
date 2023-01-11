@@ -19,7 +19,7 @@
                 <li class="nav-item"><a href="">Trabalhe Conosco</a></li>
                 <li class="nav-item"><a href="">Contatos</a></li>
                 <li class="nav-item"><a href="">LGPD</a></li>
-                <li class="nav-login"><a href="login.html">Acessar</a></li>
+                <li class="nav-login"><a href="{{url('/login')}}">Acessar</a></li>
 
                 
             </ul>

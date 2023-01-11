@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Site\SiteController;
-
-
+use App\Http\Controllers\Painel\PainelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +14,23 @@ use App\Http\Controllers\Site\SiteController;
 |
 */
 
-//ROTA SITE
-Route::get('/', [SiteController::class, 'index'])->name('site.index');
-
-
-//ROTA PAINEL
-Route::get('/painel', [PainelController::class, 'index'])->name('painel.index');
+Route::get('/', [SiteController::class, 'index'])->name('site');
 
 /**
- *
- * Route::get('/', function () {
+ Route::get('/', function () {
     return view('welcome');
-}); 
- * 
- */
+});
+*/
+
+Route::get('/painel', [PainelController::class, 'index'])
+->middleware(['auth'])->name('painel');
+
+require __DIR__.'/auth.php';
+
+/**
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+*/
